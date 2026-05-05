@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — ThinkBeyondUs · Aura Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple: #7c3aed;
+      --purple-light: #a78bfa;
+      --purple-dark: #5b21b6;
+      --indigo: #4f46e5;
+      --pink: #ec4899;
+      --rose: #f43f5e;
+      --amber: #f59e0b;
+      --bg: #0a0a0f;
+      --bg2: #12121a;
+      --bg3: #1a1a26;
+      --text: #f0effe;
+      --text-muted: #9b92cc;
+      --border: rgba(124, 58, 237, 0.2);
+      --glow: rgba(124, 58, 237, 0.4);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 5vw;
+      backdrop-filter: blur(20px);
+      background: rgba(10, 10, 15, 0.7);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 0 20px var(--glow);
+    }
+
+    .logo-text {
+      font-size: 1.25rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #fff 0%, var(--purple-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--purple), var(--indigo));
+      color: #fff;
+      box-shadow: 0 4px 24px var(--glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px var(--glow);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #fff 0%, var(--purple-light) 40%, var(--pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── HERO ── */
+    .about-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 9rem 5vw 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .orb-1 {
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, var(--purple), transparent 70%);
+      top: -20%; left: -15%;
+      animation: float 10s ease-in-out infinite;
+    }
+
+    .orb-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, var(--rose), transparent 70%);
+      bottom: -10%; right: -10%;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    .orb-3 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, var(--amber), transparent 70%);
+      top: 40%; left: 60%;
+      opacity: 0.12;
+      animation: float 14s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-28px); }
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--purple-light);
+      margin-bottom: 1.25rem;
+    }
+
+    .about-hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      max-width: 820px;
+    }
+
+    .about-hero .lead {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      color: var(--text-muted);
+      max-width: 600px;
+      line-height: 1.8;
+      font-style: italic;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── PHOTO CARD ── */
+    .photo-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .photo-glow {
+      position: absolute;
+      inset: -30px;
+      background: radial-gradient(ellipse, rgba(124,58,237,0.55), rgba(236,72,153,0.25), transparent 70%);
+      border-radius: 32px;
+      filter: blur(40px);
+      z-index: 0;
+      animation: pulse-glow 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.04); }
+    }
+
+    .photo-frame {
+      position: relative;
+      z-index: 1;
+      width: 300px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 3px solid rgba(124,58,237,0.5);
+      box-shadow:
+        0 0 0 6px rgba(124,58,237,0.1),
+        0 0 0 12px rgba(124,58,237,0.05),
+        0 30px 70px rgba(0,0,0,0.55);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* floating hearts */
+    .hearts {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 1.2rem;
+      animation: rise 3s ease-in infinite;
+      opacity: 0;
+    }
+
+    .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .heart:nth-child(2) { left: 80%; animation-delay: 1s; font-size: 0.9rem; }
+    .heart:nth-child(3) { left: 50%; animation-delay: 2s; font-size: 1rem; }
+
+    @keyframes rise {
+      0%   { bottom: 0%; opacity: 0; transform: translateX(0) scale(0.8); }
+      20%  { opacity: 0.8; }
+      80%  { opacity: 0.4; }
+      100% { bottom: 110%; opacity: 0; transform: translateX(15px) scale(1.1); }
+    }
+
+    /* ── STORY SECTION ── */
+    .story-section {
+      padding: 7rem 5vw;
+      position: relative;
+    }
+
+    .story-inner {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--purple-light);
+      margin-bottom: 0.85rem;
+    }
+
+    .story-inner h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 2.5rem;
+      line-height: 1.2;
+    }
+
+    .story-body {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .story-body p {
+      font-size: 1.05rem;
+      color: #c4bce8;
+      line-height: 1.9;
+    }
+
+    .story-body p.serif {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--text);
+    }
+
+    .pull-quote {
+      margin: 1rem 0;
+      padding: 1.75rem 2rem;
+      border-left: 3px solid var(--purple);
+      background: rgba(124,58,237,0.07);
+      border-radius: 0 16px 16px 0;
+    }
+
+    .pull-quote p {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.2rem !important;
+      font-style: italic;
+      color: var(--text) !important;
+      line-height: 1.7;
+    }
+
+    .pull-quote cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--purple-light);
+      text-transform: uppercase;
+    }
+
+    /* ── SPLIT LAYOUT (photo + story) ── */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 5vw;
+    }
+
+    .split.reverse { direction: rtl; }
+    .split.reverse > * { direction: ltr; }
+
+    .split-photo {
+      position: relative;
+    }
+
+    .split-photo-inner {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 60px rgba(124,58,237,0.15);
+      position: relative;
+    }
+
+    .split-photo-inner img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .split-photo-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 8px 30px rgba(124,58,237,0.5);
+      border: 3px solid var(--bg);
+    }
+
+    .split-photo-badge span {
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.3;
+      text-align: center;
+    }
+
+    .split-content .section-label { margin-bottom: 0.75rem; }
+
+    .split-content h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .split-content p {
+      font-size: 1rem;
+      color: #c4bce8;
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    .split-content p.serif {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--text);
+    }
+
+    /* ── VALUES / PILLARS ── */
+    .pillars-section {
+      padding: 6rem 5vw;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pillars-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .pillars-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .pillars-header h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .pillars-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .pillar-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+
+    .pillar-card:hover {
+      border-color: rgba(124,58,237,0.45);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(124,58,237,0.1);
+    }
+
+    .pillar-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1.1rem;
+      display: block;
+    }
+
+    .pillar-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .pillar-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── CLOSING LETTER ── */
+    .letter-section {
+      padding: 7rem 5vw;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .letter-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 4rem 3.5rem;
+      position: relative;
+    }
+
+    .letter-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 10% 20%, rgba(124,58,237,0.1), transparent 55%),
+        radial-gradient(ellipse at 90% 80%, rgba(236,72,153,0.07), transparent 55%);
+      border-radius: 28px;
+      pointer-events: none;
+    }
+
+    .letter-inner > * { position: relative; }
+
+    .letter-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--purple-light);
+      margin-bottom: 1.5rem;
+      padding: 0.35rem 0.9rem;
+      background: rgba(124,58,237,0.12);
+      border: 1px solid rgba(124,58,237,0.25);
+      border-radius: 100px;
+    }
+
+    .letter-inner h2 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 2rem;
+    }
+
+    .letter-body {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .letter-body p {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.05rem;
+      color: #c4bce8;
+      line-height: 1.9;
+    }
+
+    .letter-body p.emphasis {
+      color: var(--text);
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    .letter-sig {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .sig-avatar {
+      width: 72px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid rgba(124,58,237,0.4);
+      flex-shrink: 0;
+    }
+
+    .sig-avatar img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .sig-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .sig-role {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 3rem 5vw 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-nav a {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover { color: var(--text); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .split { grid-template-columns: 1fr; gap: 2.5rem; }
+      .split.reverse { direction: ltr; }
+      .split-photo-badge { right: 10px; bottom: 10px; width: 80px; height: 80px; font-size: 1.5rem; }
+      .letter-inner { padding: 2.5rem 1.75rem; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="logo">
+      <div class="logo-icon">✦</div>
+      <span class="logo-text">Aura</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#how">How it works</a></li>
+      <li><a href="index.html#reviews">Reviews</a></li>
+      <li><a href="index.html#download">Download</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+    </ul>
+    <a href="index.html#download" class="btn btn-primary">Get Aura</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <p class="hero-eyebrow fade-up visible">Our story</p>
+
+    <h1 class="fade-up visible">
+      Built with love,<br />
+      <span class="gradient-text">for a little girl</span><br />
+      who thinks beyond.
+    </h1>
+
+    <p class="lead fade-up visible">
+      Every app starts somewhere. Aura started with a bedtime question,
+      a curious daughter, and a father who wanted to give her the world.
+    </p>
+
+    <!-- Photo -->
+    <div class="photo-wrap fade-up visible">
+      <div class="photo-glow"></div>
+      <div class="photo-frame">
+        <img src="aanya-n-me.jpg" alt="Ashok and Aanya — the heart behind Aura" />
+      </div>
+      <div class="hearts">
+        <span class="heart">💜</span>
+        <span class="heart">✨</span>
+        <span class="heart">💫</span>
+      </div>
+    </div>
+
+    <p style="margin-top:1.5rem;font-size:0.85rem;color:var(--text-muted);font-style:italic;">
+      Ashok &amp; Aanya — the heart behind every line of code
+    </p>
+  </section>
+
+  <!-- STORY -->
+  <section class="story-section">
+    <div class="story-inner fade-up">
+      <p class="section-label">Where it began</p>
+      <h2>A question that changed <span class="gradient-text">everything</span></h2>
+
+      <div class="story-body">
+        <p class="serif">
+          "Appa, why is studying so boring?"
+        </p>
+
+        <p>
+          My daughter Aanya asked me that one evening, sprawled across the floor surrounded
+          by textbooks, looking absolutely defeated by homework. She's sharp, she's curious,
+          she lights up when she discovers something new — and yet, the way learning had been
+          packaged for her was killing that spark.
+        </p>
+
+        <p>
+          I'm a developer. My instinct when I see a broken experience is to build a better one.
+          So that night, I opened my laptop not to code something for work, but for her.
+        </p>
+
+        <div class="pull-quote">
+          <p>
+            "I wanted to build something that felt less like a chore and more like an adventure —
+            something worthy of her curiosity."
+          </p>
+          <cite>— Ashok, creator of Aura</cite>
+        </div>
+
+        <p>
+          I read everything I could about how children — and humans in general — actually learn.
+          Spaced repetition. Active recall. The science of focus and rest. I prototyped late into
+          the night, testing features with Aanya on weekends, watching what made her eyes light up
+          and what made her groan.
+        </p>
+
+        <p>
+          She became my first user, my harshest critic, and my greatest inspiration.
+          Every feature in Aura exists because a curious little girl deserved better.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPLIT: Photo + Daughter's story -->
+  <div class="split">
+    <div class="split-photo fade-up">
+      <div class="split-photo-inner">
+        <img src="aanya-n-me.jpg" alt="Ashok and Aanya" />
+      </div>
+      <div class="split-photo-badge">
+        <span style="font-size:2rem;">💜</span>
+        <span>For<br/>Aanya</span>
+      </div>
+    </div>
+
+    <div class="split-content fade-up">
+      <p class="section-label">The inspiration</p>
+      <h2>She taught me <span class="gradient-text">how to teach</span></h2>
+
+      <p>
+        Aanya has this incredible way of asking "but why?" until she reaches the very bottom
+        of an idea. She doesn't accept surface-level explanations. She wants to understand things
+        the way they truly work.
+      </p>
+
+      <p>
+        Watching her study taught me something I hadn't expected: the problem was never her
+        ability or her attention span. The problem was the feedback loop. She didn't know
+        what she knew, what she'd forgotten, or where to focus next.
+      </p>
+
+      <p class="serif">
+        Aura was built to solve exactly that — to be the gentle, smart guide she needed.
+        To remember for her what she was close to forgetting. To celebrate every small win.
+        To make learning feel like progress, not punishment.
+      </p>
+
+      <p>
+        ThinkBeyondUs — the name of our little studio — means exactly that. Think beyond yourself.
+        Think beyond today. Build things that outlast the moment and matter to the people you love.
+      </p>
+    </div>
+  </div>
+
+  <!-- PILLARS -->
+  <section class="pillars-section">
+    <div class="pillars-inner">
+      <div class="pillars-header fade-up">
+        <p class="section-label">What we believe</p>
+        <h2>Principles behind <span class="gradient-text">every decision</span></h2>
+        <p>These aren't marketing words. They're the things Aanya reminded me of, every single time.</p>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar-card fade-up">
+          <span class="pillar-icon">🧠</span>
+          <h3>Curiosity is sacred</h3>
+          <p>A child's natural hunger to understand the world is the most precious thing there is. Aura protects it, not crushes it.</p>
+        </div>
+        <div class="pillar-card fade-up">
+          <span class="pillar-icon">💜</span>
+          <h3>Love is the best design brief</h3>
+          <p>Building something for someone you love sets a standard no OKR or metric ever could. That's the standard Aura is held to.</p>
+        </div>
+        <div class="pillar-card fade-up">
+          <span class="pillar-icon">🌱</span>
+          <h3>Progress, not perfection</h3>
+          <p>Aanya taught me that small wins compound. A single flashcard remembered today becomes a concept owned for life.</p>
+        </div>
+        <div class="pillar-card fade-up">
+          <span class="pillar-icon">🔒</span>
+          <h3>Privacy without question</h3>
+          <p>My daughter's learning habits are not a data point. Neither are yours. Aura stays on your device, full stop.</p>
+        </div>
+        <div class="pillar-card fade-up">
+          <span class="pillar-icon">✨</span>
+          <h3>Delight is not optional</h3>
+          <p>If an 8-year-old is bored, the app failed — not her. Every screen should feel like something worth coming back to.</p>
+        </div>
+        <div class="pillar-card fade-up">
+          <span class="pillar-icon">🤝</span>
+          <h3>Think beyond yourself</h3>
+          <p>We build for students we've never met, because somewhere out there is another Aanya who deserves better than boring.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LETTER TO AANYA -->
+  <section class="letter-section">
+    <div class="letter-inner fade-up">
+      <span class="letter-tag">A note from Appa</span>
+
+      <h2>Dear Aanya,</h2>
+
+      <div class="letter-body">
+        <p>
+          You were seven when you asked me why studying had to be so hard. I didn't have
+          a good answer then. So I did what I always do when I don't have an answer — I tried
+          to build one.
+        </p>
+        <p>
+          This app is for you. But it's also for every kid who felt the way you did that evening —
+          staring at a textbook, smart as anything, just waiting for someone to show them a better way.
+        </p>
+        <p class="emphasis">
+          You are the reason ThinkBeyondUs exists. You are the reason I care about making
+          things that are actually good, not just good enough.
+        </p>
+        <p>
+          Every time a student somewhere opens Aura and smiles because learning finally clicked —
+          that moment belongs to you. You started this. You keep it going.
+        </p>
+        <p>
+          Never stop asking "but why?" It's your superpower. Don't let anyone take it from you.
+        </p>
+        <p>
+          I love you more than all the flashcards in the world. 💜
+        </p>
+      </div>
+
+      <div class="letter-sig">
+        <div class="sig-avatar">
+          <img src="aanya-n-me.jpg" alt="Ashok" />
+        </div>
+        <div>
+          <div class="sig-name">Ashok Kumar</div>
+          <div class="sig-role">Appa · Founder, ThinkBeyondUs</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p>© 2026 ThinkBeyondUs. Made with 💜 for Aanya.</p>
+      <ul class="footer-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#download">Download</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 90);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
