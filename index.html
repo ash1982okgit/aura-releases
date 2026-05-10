@@ -268,7 +268,7 @@
     .hero-mockup {
       position: relative;
       width: 100%;
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
@@ -301,139 +301,17 @@
     .mockup-dot:nth-child(2) { background: #ffbd2e; }
     .mockup-dot:nth-child(3) { background: #28ca41; }
 
-    .mockup-content {
-      padding: 2rem;
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: 1.5rem;
-      min-height: 340px;
+    .slideshow .slide {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
-
-    .mockup-sidebar {
-      background: var(--bg3);
-      border-radius: 12px;
-      padding: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .sidebar-item {
-      padding: 0.6rem 0.8rem;
-      border-radius: 8px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      transition: all 0.2s;
-    }
-
-    .sidebar-item.active {
-      background: rgba(124, 58, 237, 0.2);
-      color: var(--purple-light);
-    }
-
-    .sidebar-icon {
-      width: 16px;
-      opacity: 0.7;
-    }
-
-    .mockup-main {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .mockup-card {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.1rem 1.25rem;
-    }
-
-    .card-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .card-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.6rem;
-    }
-
-    .progress-bar {
-      height: 6px;
-      background: var(--bg);
-      border-radius: 99px;
-      overflow: hidden;
-      margin-bottom: 0.4rem;
-    }
-
-    .progress-fill {
-      height: 100%;
-      border-radius: 99px;
-      background: linear-gradient(90deg, var(--purple), var(--pink));
-    }
-
-    .progress-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    .streak-row {
-      display: flex;
-      gap: 0.35rem;
-    }
-
-    .streak-day {
-      flex: 1;
-      height: 32px;
-      border-radius: 6px;
-      background: var(--bg);
-    }
-
-    .streak-day.done {
-      background: linear-gradient(135deg, var(--purple), var(--indigo));
-    }
-
-    .streak-day.partial {
-      background: rgba(124,58,237,0.3);
-    }
-
-    .cards-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .stat-card {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 1.75rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--purple-light), var(--pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .stat-label {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      font-weight: 500;
+    .slideshow .slide.active {
+      opacity: 1;
     }
 
     /* ── STATS BAND ── */
@@ -940,8 +818,6 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .mockup-content { grid-template-columns: 1fr; }
-      .mockup-sidebar { display: none; }
       .steps::before { display: none; }
       .footer-top { flex-direction: column; }
       .footer-bottom { flex-direction: column; text-align: center; }
@@ -993,67 +869,18 @@
 
     <!-- App Mockup -->
     <div class="hero-mockup fade-up visible">
-      <div class="mockup-window">
-        <div class="mockup-bar">
+      <div class="mockup-window" style="padding: 0; position: relative;">
+        <div class="mockup-bar" style="position: absolute; top: 0; left: 0; right: 0; z-index: 10; background: rgba(18,18,26,0.8); backdrop-filter: blur(10px);">
           <div class="mockup-dot"></div>
           <div class="mockup-dot"></div>
           <div class="mockup-dot"></div>
         </div>
-        <div class="mockup-content">
-          <div class="mockup-sidebar">
-            <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);padding:0 0.8rem 0.75rem;border-bottom:1px solid var(--border);margin-bottom:0.5rem;">Aura</div>
-            <div class="sidebar-item active">
-              <span>📊</span> Dashboard
-            </div>
-            <div class="sidebar-item">
-              <span>📚</span> My Courses
-            </div>
-            <div class="sidebar-item">
-              <span>🎯</span> Focus Mode
-            </div>
-            <div class="sidebar-item">
-              <span>🃏</span> Flashcards
-            </div>
-            <div class="sidebar-item">
-              <span>📝</span> Notes
-            </div>
-            <div class="sidebar-item">
-              <span>📈</span> Analytics
-            </div>
-            <div class="sidebar-item">
-              <span>⚙️</span> Settings
-            </div>
-          </div>
-          <div class="mockup-main">
-            <div class="cards-row">
-              <div class="stat-card">
-                <div class="stat-number">14</div>
-                <div class="stat-label">Day streak 🔥</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-number">87%</div>
-                <div class="stat-label">Retention rate</div>
-              </div>
-            </div>
-            <div class="mockup-card">
-              <div class="card-label">Today's Focus</div>
-              <div class="card-title">Organic Chemistry — Chapter 8</div>
-              <div class="progress-bar"><div class="progress-fill" style="width:62%"></div></div>
-              <div class="progress-label">62% complete · Est. 24 min remaining</div>
-            </div>
-            <div class="mockup-card">
-              <div class="card-label">Weekly Streak</div>
-              <div class="streak-row">
-                <div class="streak-day done"></div>
-                <div class="streak-day done"></div>
-                <div class="streak-day done"></div>
-                <div class="streak-day done"></div>
-                <div class="streak-day partial"></div>
-                <div class="streak-day"></div>
-                <div class="streak-day"></div>
-              </div>
-            </div>
-          </div>
+        <div class="slideshow" style="position: relative; width: 100%; aspect-ratio: 16/10; overflow: hidden; background: var(--bg);">
+          <img src="images/app-1-login.png" class="slide active" alt="Aura Welcome Screen" />
+          <img src="images/app-2-dashboard.png" class="slide" alt="Aura Dashboard" />
+          <img src="images/app-5-lesson.png" class="slide" alt="Multi-Modal Lesson View" />
+          <img src="images/app-3-progress.png" class="slide" alt="Progress & Plans" />
+          <img src="images/app-4-settings.png" class="slide" alt="Aura Settings" />
         </div>
       </div>
     </div>
@@ -1087,34 +914,34 @@
 
     <div class="features-grid">
       <div class="feature-card fade-up">
-        <div class="feature-icon fi-1">🧠</div>
-        <h3>Spaced Repetition</h3>
-        <p>Our algorithm serves up material exactly when you're about to forget it — maximizing retention with minimum effort.</p>
+        <div class="feature-icon fi-1">📄</div>
+        <h3>Smart Syllabus Extraction</h3>
+        <p>Import from PDFs or type your syllabus manually. Aura auto-generates comprehensive lesson plans, study sprints, and goals.</p>
       </div>
       <div class="feature-card fade-up">
-        <div class="feature-icon fi-2">⏱️</div>
-        <h3>Deep Focus Mode</h3>
-        <p>Pomodoro-based sessions with ambient soundscapes and smart break reminders tuned to your cognitive rhythm.</p>
+        <div class="feature-icon fi-2">✨</div>
+        <h3>Rich Multi-Modal Lessons</h3>
+        <p>Experience lessons generated dynamically by AI, complete with rich formatting, contextual illustrations, and integrated video search.</p>
       </div>
       <div class="feature-card fade-up">
-        <div class="feature-icon fi-3">🃏</div>
-        <h3>Smart Flashcards</h3>
-        <p>Import from PDFs, notes, or type manually. Aura auto-generates cards and ranks them by your personal weak spots.</p>
+        <div class="feature-icon fi-3">🔊</div>
+        <h3>Neural Text-To-Speech</h3>
+        <p>Listen to your lessons on the go using high-quality voices from Edge TTS, OpenAI, or ElevenLabs — fully customizable.</p>
       </div>
       <div class="feature-card fade-up">
-        <div class="feature-icon fi-4">📈</div>
-        <h3>Progress Analytics</h3>
-        <p>Visual insights into study time, retention, and mastery across subjects — so you always know where to focus next.</p>
+        <div class="feature-icon fi-4">🏆</div>
+        <h3>Streaks & Spark Points</h3>
+        <p>Stay motivated with a gamified learning experience. Earn Spark Points for completing daily missions and climb the global leaderboard.</p>
       </div>
       <div class="feature-card fade-up">
-        <div class="feature-icon fi-5">🎯</div>
-        <h3>Goal Tracking</h3>
-        <p>Set exam dates, break down syllabi, and let Aura build a personalised daily study plan that keeps you on track.</p>
+        <div class="feature-icon fi-5">⚙️</div>
+        <h3>Custom AI Prompts</h3>
+        <p>Take control of your AI tutor. Edit the core instructions given to the AI for syllabus extraction, lesson writing, and quiz generation.</p>
       </div>
       <div class="feature-card fade-up">
         <div class="feature-icon fi-6">🌙</div>
-        <h3>Offline & Private</h3>
-        <p>All your notes and progress live on your device. Study on a plane, subway, or anywhere — no internet needed.</p>
+        <h3>Private & Flexible</h3>
+        <p>Study on your terms. Use Guest Mode for local-first studying without an account, or log in to sync your progress securely.</p>
       </div>
     </div>
   </section>
@@ -1464,6 +1291,18 @@
         }
       });
     });
+
+    // ── Slideshow logic ──────────────────────────────────────────────────────
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    
+    if (slides.length > 0) {
+      setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+      }, 4000);
+    }
 
     // ── Boot ─────────────────────────────────────────────────────────────────
     initDownloads();
