@@ -292,29 +292,11 @@
   <!-- HEADER -->
   <header class="page-header">
     <h1>API Provider Setup</h1>
-    <p>Aura connects to your own API keys, keeping you in full control of your data and usage. Follow these steps to set up your environment.</p>
+    <p>Follow these step-by-step instructions to securely generate API tokens for your preferred AI providers.</p>
   </header>
 
   <!-- CONTENT -->
   <main class="setup-container">
-
-    <!-- Supabase -->
-    <div class="provider-card">
-      <div class="provider-header">
-        <div class="provider-title">
-          <span class="provider-icon">⚡</span>
-          <span class="provider-name">Supabase</span>
-        </div>
-        <a href="https://supabase.com/dashboard" target="_blank" class="btn btn-ghost">Go to Supabase →</a>
-      </div>
-      <p class="provider-desc">Used for secure authentication and cloud syncing of your lesson plans and progress.</p>
-      <ol class="steps-list">
-        <li>Create a free account on Supabase and click <strong>"New Project"</strong>.</li>
-        <li>Once your project is ready, navigate to <strong>Project Settings > API</strong> in the left sidebar.</li>
-        <li>Copy the <strong>Project URL</strong> and paste it into the Aura Setup under <span class="code-block">SUPABASE_URL</span>.</li>
-        <li>Copy the <strong>anon / public</strong> key and paste it into the Aura Setup under <span class="code-block">SUPABASE_ANON_KEY</span>.</li>
-      </ol>
-    </div>
 
     <!-- OpenAI -->
     <div class="provider-card">
@@ -330,7 +312,7 @@
         <li>Sign in to the OpenAI platform and navigate to the <strong>API Keys</strong> page.</li>
         <li>Click <strong>"Create new secret key"</strong>.</li>
         <li>Give it a name (e.g., "Aura Study") and click Create.</li>
-        <li>Copy the generated key (it starts with <span class="code-block">sk-...</span>) and paste it into the Aura Setup.</li>
+        <li>Copy the generated key (it starts with <span class="code-block">sk-...</span>) and save it securely.</li>
       </ol>
     </div>
 
@@ -348,7 +330,41 @@
         <li>Go to Google AI Studio and sign in with your Google account.</li>
         <li>Click <strong>"Get API key"</strong> in the left navigation menu.</li>
         <li>Click <strong>"Create API key"</strong> and select a project (or create a new one).</li>
-        <li>Copy the generated key and paste it into the Aura Setup.</li>
+        <li>Copy the generated key and save it securely.</li>
+      </ol>
+    </div>
+
+    <!-- OpenRouter -->
+    <div class="provider-card">
+      <div class="provider-header">
+        <div class="provider-title">
+          <span class="provider-icon">🌐</span>
+          <span class="provider-name">OpenRouter</span>
+        </div>
+        <a href="https://openrouter.ai/keys" target="_blank" class="btn btn-ghost">Get API Key →</a>
+      </div>
+      <p class="provider-desc">Access dozens of top-tier AI models (including Claude 3, Llama 3, and more) through a single unified API.</p>
+      <ol class="steps-list">
+        <li>Sign in to OpenRouter and go to the <strong>Keys</strong> page.</li>
+        <li>Click <strong>"Create Key"</strong> and assign it a memorable name.</li>
+        <li>Copy the generated key and save it securely.</li>
+      </ol>
+    </div>
+
+    <!-- Hugging Face -->
+    <div class="provider-card">
+      <div class="provider-header">
+        <div class="provider-title">
+          <span class="provider-icon">🤗</span>
+          <span class="provider-name">Hugging Face</span>
+        </div>
+        <a href="https://huggingface.co/settings/tokens" target="_blank" class="btn btn-ghost">Get API Key →</a>
+      </div>
+      <p class="provider-desc">Used for accessing open-source language models and specialized AI tools.</p>
+      <ol class="steps-list">
+        <li>Create an account or sign in to Hugging Face.</li>
+        <li>Navigate to your profile settings and click on <strong>"Access Tokens"</strong>.</li>
+        <li>Click <strong>"New token"</strong>, select the "Read" role, and copy the generated token.</li>
       </ol>
     </div>
 
@@ -365,7 +381,7 @@
       <ol class="steps-list">
         <li>Create an account on ElevenLabs.</li>
         <li>Click on your profile picture in the bottom left corner and select <strong>"Profile + API key"</strong>.</li>
-        <li>Click the eye icon to reveal your API key, copy it, and paste it into the Aura Setup.</li>
+        <li>Click the eye icon to reveal your API key and copy it securely.</li>
       </ol>
     </div>
 
